@@ -23,6 +23,10 @@
           <label>Price</label>
           <input type="text" class="form-control" name="product_price" value="<?php echo $product_price; ?>" placeholder="Price">
         </div>
+        <div class="form-group">
+          <label>Deskripsi</label>
+          <input type="text" class="form-control" name="product_description" value="<?php echo $product_description; ?>" placeholder="Deskripsi">
+        </div>
         <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
         <button type="submit" class="btn btn-primary">Update</button>
       </form>

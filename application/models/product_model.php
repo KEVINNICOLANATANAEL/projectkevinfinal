@@ -6,9 +6,9 @@ class Product_model extends CI_Model
         $result = $this->db->get('product');
         return $result;
     }
-    function save($product_name, $product_price, $product_picture)
+    function save($product_name, $product_price, $product_picture, $product_description)
     {
-        $data = array('product_name' => $product_name, 'product_price' => $product_price, 'product_picture' => $product_picture);
+        $data = array('product_name' => $product_name, 'product_price' => $product_price, 'product_picture' => $product_picture, 'product_description' => $product_description);
         $this->db->insert('product', $data);
     }
     function delete($product_id)
@@ -21,9 +21,9 @@ class Product_model extends CI_Model
         $query = $this->db->get_where('product', array('product_id' => $product_id));
         return $query;
     }
-    function update($product_id, $product_name, $product_price)
+    function update($product_id, $product_name, $product_price, $product_description)
     {
-        $data = array('product_name' => $product_name, 'product_price' => $product_price);
+        $data = array('product_name' => $product_name, 'product_price' => $product_price, 'product_description' => $product_description);
         $this->db->where('product_id', $product_id);
         $this->db->update('product', $data);
     }

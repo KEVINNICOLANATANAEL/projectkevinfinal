@@ -1,12 +1,17 @@
 <?php
 class Hello extends CI_Controller
 {
-    function index()
+    function __construct()
     {
-        echo "Hello World";
+        parent::__construct();
+        $this->load->model('product_model');
     }
-    function show()
+    public function index()
     {
-        echo "I Make The World Better Place.";
+        $data['product'] = $this->product_model->get_product();
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar');
+        $this->load->view('detail_view', $data);
+        $this->load->view('template/footer');
     }
 }

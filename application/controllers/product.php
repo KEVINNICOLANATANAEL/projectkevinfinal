@@ -34,6 +34,7 @@ class Product extends CI_Controller
       $product_name = $this->input->post('product_name');
       $product_price = $this->input->post('product_price');
       $product_picture = $_FILES['picture']['name'];
+      $product_description = $this->input->post('product_description');
       $config['upload_path'] = './upload/';
       $config['allowed_types'] = 'gif|jpg|png';
       $config['max_size'] = 10000;
@@ -42,7 +43,7 @@ class Product extends CI_Controller
       if (!$this->upload->do_upload('picture')) {
          echo "Gagal Upload Gambar";
       } else {
-         $this->product_model->save($product_name, $product_price, $product_picture);
+         $this->product_model->save($product_name, $product_price, $product_picture, $product_description);
          redirect('product');
       }
    }
@@ -58,7 +59,7 @@ class Product extends CI_Controller
       $result = $this->product_model->get_product_id($product_id);
       if ($result->num_rows() > 0) {
          $i = $result->row_array();
-         $data = array('product_id' => $i['product_id'], 'product_name' => $i['product_name'], 'product_price' => $i['product_price']);
+         $data = array('product_id' => $i['product_id'], 'product_name' => $i['product_name'], 'product_price' => $i['product_price'], 'product_description' => $i['product_description']);
          $this->load->view('edit_product_view', $data);
       } else {
          echo "Data Was Not Found";
@@ -69,7 +70,8 @@ class Product extends CI_Controller
       $product_id = $this->input->post('product_id');
       $product_name = $this->input->post('product_name');
       $product_price = $this->input->post('product_price');
-      $this->product_model->update($product_id, $product_name, $product_price);
+      $product_description = $this->input->post('product_description');
+      $this->product_model->update($product_id, $product_name, $product_price, $product_description);
       redirect('product');
    }
 }
