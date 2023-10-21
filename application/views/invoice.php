@@ -11,7 +11,7 @@
       <tr>
         <th scope="col">No</th>
         <th scope="col">Nama Pemesan</th>
-        <th scope="col">Alamat</th>
+        <th scope="col">Alamat</th>   
         <th scope="col">Tanggal Pemesanan</th>
         <th scope="col">Batas Pembayaran</th>
         <th scope="col">Aksi</th>
